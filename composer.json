@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/",
+            "core\\": "core/"
+        },
+        "functions" : [
+            "app/functions/helpers.php"
+        ]
+    },
+    "require": {
+        "twig/twig": "^2.4"
+    }
+}

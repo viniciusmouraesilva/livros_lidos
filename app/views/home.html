@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block livros_lidos %}
+
+{% for livro in livros %}
+
+    <p>Livro: {{ livro.titulo }}</p>
+
+{% endfor %}
+
+{% endblock %}
