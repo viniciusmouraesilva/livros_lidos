@@ -24,11 +24,32 @@ class Controller
         if ($this->isHome()) {
             return $this->controllerHome();
         }
+
+        return $this->isNotHome();
     }
 
     private function isHome()
     {
         return ($this->uri == '/');
+    }
+
+    private function isNotHome()
+    {
+        if (substr_count($this->uri, '/') >= 1) {
+            return $this->controllerNotHome();
+        }
+    }
+
+    private function controllerNotHome()
+    {
+        $data = array_values(array_filter(explode('/', $this->uri)));
+        $controller = ucfirst($data[0]) . 'Controller';
+        
+        if (!$this->controllerExist($controller)) {
+            throw new ControllerNotExistException('Não foi possível encontrar uma rota');
+        }
+
+        return $this->instantiateController();
     }
 
     private function controllerHome()

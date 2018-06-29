@@ -4,7 +4,7 @@
 
 {% for livro in livros %}
 
-    <p>Livro: {{ livro.titulo }}</p>
+    <p><a href="livro/{{ livro.titulo }}">{{ livro.titulo }}</a></p>
 
 {% endfor %}
 

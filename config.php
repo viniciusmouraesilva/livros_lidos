@@ -4,8 +4,8 @@ return [
     'database' => [
         'host' => 'localhost',
         'dbname' => 'meuslivros',
-        'user' => 'user',
-        'password' => 'senha',
+        'user' => 'root',
+        'password' => 'Zuruca@052',
         'charset' => 'utf8',
         'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

@@ -17,4 +17,18 @@ class Model
 
         return $livros->fetchAll();
     }
+
+    public function equal($value, $campo)
+    {
+        $this->connection = Bind::get('connection');
+        $sql = "SELECT * FROM $this->table WHERE $campo = :$campo";
+        $equal = $this->connection->prepare($sql);
+        $equal->execute([$campo => $value]);
+
+        if ($equal->rowCount() == 1) {
+            return $equal->fetch();
+        }
+
+        return false;
+    }
 }

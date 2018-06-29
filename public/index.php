@@ -9,6 +9,7 @@ require '../bootstrap.php';
 
 use core\Controller;
 use core\Method;
+use core\Parameter;
 
 try {
     $controller = new Controller;
@@ -17,8 +18,15 @@ try {
     $method = new Method;
     $method = $method->load($controller);
 
-    $controller->$method();
+    if (is_array($method)) {
+        list($method, $values) = $method;
+        $controller->$method($values);
+    } else {
+        $controller->$method();
+    }
 
+    #$parameter = new Parameter();
+    #$parameter = $parameter->load();
 } catch (Exception $ex) {
     print $ex->getMessage();
 }
